@@ -73,7 +73,8 @@ published Laravel configuration. Generated API signatures are checked for drift.
 - Owner-selected open-source license and clean strict Composer validation.
 - Final review/integration of all stage PRs and impact-classified immutable source
   versions/tags under the repository's existing workflow.
-- Actual remote CI evidence, in addition to recorded local checks.
+- A fully green remote CI run. Checkpoint 2aad56e has successful runtime tests,
+  quality and installation jobs, but strict validation fails for the missing license.
 - Numeric-version Composer installation and confirmed distribution mechanism.
   Archive installation does not establish Packagist availability.
 - Final release consistency audit, including wiki/source links and exact tested

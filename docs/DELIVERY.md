@@ -117,8 +117,20 @@ The expanded suite passes 201 tests / 4,104 assertions under PHP 8.4.27, includi
 executable quick-start/configuration examples and all-public engine-type/float-token
 contract checks. Pint passes 84 files; PHPStan max, 107 independent vectors and
 generated API reference checks pass. Actionlint validates the CI workflow locally.
-The actual GitHub run is still pending publication of this checkpoint. Composer
-audit reports no security vulnerability advisories for the resolved dependencies.
+[GitHub CI run 45057327154](https://github.com/moztopia/moztopia-money/actions/runs/45057327154)
+verified checkpoint `2aad56efa04d1bd8e788006ed509cc1fb0135c8c`: tests, executable
+examples and API checks succeeded on all three PHP lines; quality/independent
+vectors and both immutable installation jobs succeeded. The run is **failed**
+because strict Composer validation fails solely for the unanswered license choice.
+No all-green CI claim is made. Composer audit reports no security vulnerability
+advisories for the locally resolved dependencies.
+
+CI's nominal PHP 8.3.36 selection actually resolved PHP 8.3.37 in the hosted
+setup action; local Docker checks independently prove 8.3.36. The workflow now
+requests supported minor lines for current patch coverage, prints actual runtime
+and Composer versions and checks platform requirements. Job labels do not prove
+exact installed patch versions. Local floor checks and hosted current-patch checks
+are separate evidence.
 
 The core/Laravel suite also passes under independently installed PHP 8.3.36 and
 8.5.13 development dependency trees. The generated reference initially exposed a
@@ -137,10 +149,16 @@ executable five-minute guide, failure handling, dependency inventory, contributi
 and release guidance are now present. [ACCEPTANCE.md](ACCEPTANCE.md) maps the
 definition of done to evidence and explicitly preserves open release gates.
 
-Wiki readiness was owner-confirmed. Its initial Home page is commit
-`3c945e95426f01782f94e76e049cc7a985e9b510` on `master`. Organization Team plan,
-wiki enabled state and Git access verified 2026-11-22. `/wiki/` stays ignored.
-Package contract documents are authoritative; needed wiki links follow verified
-content rather than duplicating protocols. No wiki publication has occurred.
+Wiki readiness was owner-confirmed. Organization Team plan, enabled state, clean
+separate checkout and Git access were reconfirmed 2026-11-22. The minimal agent-doc
+index was published at wiki commit `5152a243f022b59fd99c76c8cc43fc63e5d54eaf` on
+the discovered `master` branch and verified against remote Git. It indexes exact
+parent checkpoint `2aad56efa04d1bd8e788006ed509cc1fb0135c8c`, unreleased candidate
+0.1.0, not a fabricated numeric release. All ten source targets exist in that Git
+revision; twelve links and local CommonMark HTML structure were checked without a
+browser. Visual/browser rendering is not claimed. `/wiki/` stays ignored. Package
+documents remain authoritative; the index does not duplicate operational guidance.
+This later source update records verification evidence, without changing the
+indexed monetary API/protocol. Refresh the index after actual release finalization.
 
 by-dolly
