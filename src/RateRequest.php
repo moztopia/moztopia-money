@@ -63,7 +63,7 @@ final readonly class RateRequest
     public function cacheKey(string $providerIdentity): string
     {
         $identity = fn (Currency $currency): array => [$currency->code, $currency->minorUnits, $currency->registry, $currency->version];
-        return 'moztopia.money.rate.'.hash('sha256', json_encode([
+        return 'moztopia.money.rate.v1.'.hash('sha256', json_encode([
             $providerIdentity, $identity($this->base), $identity($this->quote),
             $this->date, $this->policy->value, $this->maxLookbackDays,
         ], JSON_THROW_ON_ERROR));

@@ -17,7 +17,7 @@ compatibility even when method signatures remain unchanged.
 1. #2 contracts and independent reference vectors — checkpoint pushed; draft PR #7.
 2. #3 monetary engine — implemented; verification and review in progress.
 3. #4 rates, conversion and cache — implemented; verification and review in progress.
-4. #5 Laravel integration — blocked by Stage 3.
+4. #5 Laravel integration — implemented; verification and review in progress.
 5. #6 packaging, agent-first documentation and release checks — blocked by Stage 4.
 
 Every stage requires relevant tests, documented decisions, public-contract review
@@ -32,10 +32,11 @@ stack is scaffolded. Production runtime is consumer-owned and unverified.
 
 ## Pending release evidence
 
-Owner-selected license; working engine; all stage tests; static analysis; CI;
-standalone/fresh Laravel installations; API leakage audit; executable examples;
-documentation completeness; supported PHP matrix; immutable version tag and
-actual Composer distribution availability. These are open, not assumed passed.
+Owner-selected license; final stage review/integration; CI and supported PHP
+matrix; immutable archive/VCS installation; complete API/dependency/reference
+documentation and release audit; immutable source version/tag and actual Composer
+distribution availability. Completed local checks are recorded below and do not
+substitute for these remaining release checks.
 
 ## Stage 1 checks
 
@@ -79,6 +80,33 @@ and Frankfurter v2 ECB selection for USD/THB on 2026-01-15. The response preserv
 rate `31.395` as a string, actual/source date 2026-01-15, requested date 2026-01-15,
 provider Frankfurter, source ECB and a separate UTC retrieval timestamp. This live
 check is not part of ordinary tests or CI and provides no uptime guarantee.
+
+## Stage 4 checks
+
+Combined suite: 196 passing Pest tests / 3,595 assertions under PHP 8.4.27 with
+Laravel 13.43.0 and Testbench 11.3.0. PHPStan maximum level, Pint, unchanged 107
+independent mathematical checks and diff checks pass. Laravel tests cover explicit
+integer/decimal bounds, null/dirty/serialization behavior, atomic currency fields,
+custom identities, validation restrictions/catalogs, provider replacement and locks.
+
+A genuinely fresh Laravel 13.43.0 application installed the package as a Composer
+path dependency and passed automatic discovery, DI, rate/cache, SQLite persistence,
+validation and config publication both before and after config caching. These are
+working-source installation checks; immutable artifact installation remains Stage 5.
+
+Separate disposable MariaDB 11.8.9 probes verified signed/unsigned BIGINT extremes,
+DECIMAL(38,3), DECIMAL(38,0), LONGTEXT and full custom definition identity. Two
+independent PHP processes both completed against Laravel's native database cache:
+one direct observation, one fresh cache hit, exactly one source call. Persisted
+entries use validated primitive protocol-1 data, compatible with restricted object
+restoration. Regression tests reject corrupt data and unknown custom definitions.
+Cached/stale returns cannot be stored and relabeled as direct observations.
+
+The CLI verifier image uses official PHP 8.4.27, Composer and PDO MySQL. Its local
+build required a per-build hostname override after build-time DNS failed; no host
+or daemon configuration changed. The disposable database used a reviewed private
+subnet because automatic Docker address pools were exhausted; unrelated networks
+and services were preserved. No application server or host port was introduced.
 
 Wiki readiness was owner-confirmed. Its initial Home page is commit
 `3c945e95426f01782f94e76e049cc7a985e9b510` on `master`. Organization Team plan,

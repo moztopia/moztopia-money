@@ -6,6 +6,7 @@ namespace Moztopia\Money;
 
 use Moztopia\Money\Exception\CacheFailure;
 use Moztopia\Money\Exception\ProviderFailure;
+use Moztopia\Money\Exception\RateUnavailable;
 use Moztopia\Money\Exception\TransportFailure;
 
 /**
@@ -71,6 +72,9 @@ final readonly class CachedRateProvider implements ExchangeRateProvider
                     return $request->bind($entry->rate)->withFreshness(RateFreshness::STALE_CACHE);
                 }
                 throw $exception;
+            }
+            if ($rate->freshness === RateFreshness::STALE_CACHE) {
+                throw new RateUnavailable('An upstream stale result has no verifiable local expiry window.');
             }
             if ($rate->freshness !== RateFreshness::DIRECT) {
                 return $rate;

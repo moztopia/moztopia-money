@@ -10,6 +10,8 @@
   custom currencies, formatting and serialization; execute examples/core.php.
 - [Exchange recipes](docs/EXCHANGE_RATES.md): replaceable providers, strict dates,
   reproducible conversion, cache freshness and transport; execute examples/rates.php.
+- [Laravel integration](docs/LARAVEL.md): explicit storage/currency declarations,
+  native validation, discovery, injection and cache locking; executable probes linked.
 - [Standard Money schema](resources/schema/money.schema.json): integer minor units
   as strings, never floating-point or major-unit JSON amounts.
 - [Custom Money schema](resources/schema/custom-money.schema.json): registry identity,

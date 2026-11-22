@@ -8,11 +8,22 @@
     },
     "require-dev": {
         "laravel/pint": "^1.25",
+        "orchestra/testbench": "^11.3",
         "pestphp/pest": "^3.8 || ^4.0 || ^5.0",
         "phpstan/phpstan": "^2.1"
     },
     "suggest": {
-        "ext-curl": "Required only for the default CurlTransport; custom HttpTransport implementations may replace it."
+        "ext-curl": "Required only for the default CurlTransport; custom HttpTransport implementations may replace it.",
+        "illuminate/cache": "^13.0 for optional native Laravel cache integration.",
+        "illuminate/contracts": "^13.0 for optional native Laravel adapter contracts.",
+        "illuminate/database": "^13.0 for optional Eloquent Money casts.",
+        "illuminate/support": "^13.0 for optional package discovery and facade integration.",
+        "illuminate/validation": "^13.0 for optional Laravel validation rules."
+    },
+    "extra": {
+        "laravel": {
+            "providers": ["Moztopia\\Money\\Laravel\\MoneyServiceProvider"]
+        }
     },
     "autoload": {
         "psr-4": {

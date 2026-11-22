@@ -85,7 +85,10 @@ rechecks freshness inside synchronization. ArrayRateCache detects recursion but
 provides no shared-process lock. Shared backends should implement a real lock;
 Laravel integration supplies its native cache adapter. Configure a lock lease longer
 than the source's maximum request/retry duration. Do not nest caching decorators:
-upstream cache returns retain their state and are not reinserted with a fresh TTL.
+fresh upstream cache returns retain their state and are not reinserted with a fresh
+TTL; stale upstream returns fail because their expiry window cannot be verified.
+Stored cache entries retain only original direct observations. Native Laravel cache
+payloads use versioned primitive arrays and validate definitions on reconstruction.
 
 ## HTTP and failure behavior
 

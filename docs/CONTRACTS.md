@@ -141,6 +141,11 @@ rate unavailability/provider transport and storage bounds. Preserve underlying
 causes privately where useful; consumers never need engine exception types.
 PHP type errors for invalid object/interface arguments remain normal PHP errors.
 
+Native optional Laravel adapters implement Laravel framework interop interfaces in
+the Laravel namespace. Those signatures are isolated from the framework-independent
+domain contracts; no third-party calculation-engine types are exposed. Casts require
+declared storage ranges and currency sources rather than inferred application policy.
+
 ## Concrete API design decisions
 
 The namespace is `Moztopia\Money`. Classes are final immutable values where

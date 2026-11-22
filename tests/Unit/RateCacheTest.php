@@ -107,3 +107,12 @@ it('bounds local retention and prevents recursive refreshes', function () {
     $clock->advance(10);
     expect($cache->get('two'))->toBeNull();
 });
+
+it('never relabels upstream stale returns as fresh local cache entries', function () {
+    $clock = new FrozenClock(new DateTimeImmutable('2026-01-16T12:00:00Z'));
+    $rate = (new ExchangeRate('USD', 'THB', '35', '2026-01-15', 'manual'))->withFreshness(RateFreshness::STALE_CACHE);
+    $provider = new CachedRateProvider(new FakeRateProvider($rate), clock: $clock);
+    expect(fn () => $provider->get(new RateRequest('USD', 'THB')))->toThrow(\Moztopia\Money\Exception\RateUnavailable::class);
+    expect(fn () => new \Moztopia\Money\RateCacheEntry($rate, $clock->now(), $clock->now()->modify('+60 seconds')))
+        ->toThrow(\Moztopia\Money\Exception\CacheFailure::class);
+});

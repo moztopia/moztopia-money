@@ -25,6 +25,9 @@ final readonly class RateCacheEntry
         if ($expiresAt <= $cachedAt) {
             throw new CacheFailure('Cache expiry must be later than its insertion timestamp.');
         }
+        if ($rate->freshness !== RateFreshness::DIRECT) {
+            throw new CacheFailure('Cache entries must retain original direct observations, never relabel a cached or stale return.');
+        }
     }
 
     /**
