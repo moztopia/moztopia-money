@@ -8,6 +8,8 @@
 - [Contracts](docs/CONTRACTS.md): mathematical semantics and canonical protocols.
 - [Core recipes](docs/CORE.md): implemented exact values, calculations, allocation,
   custom currencies, formatting and serialization; execute examples/core.php.
+- [Exchange recipes](docs/EXCHANGE_RATES.md): replaceable providers, strict dates,
+  reproducible conversion, cache freshness and transport; execute examples/rates.php.
 - [Standard Money schema](resources/schema/money.schema.json): integer minor units
   as strings, never floating-point or major-unit JSON amounts.
 - [Custom Money schema](resources/schema/custom-money.schema.json): registry identity,

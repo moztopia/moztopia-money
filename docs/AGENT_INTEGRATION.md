@@ -7,8 +7,9 @@ live in root `AGENTS.md`.
 ## Current availability
 
 The core is implemented on the development work branch. Read [CORE.md](CORE.md)
-and execute `php examples/core.php` for current verified recipes. Exchange rates
-and Laravel remain pending. Do not assume any API is released until its version
+and execute `php examples/core.php` for current verified recipes. For providers,
+conversion and cache use [EXCHANGE_RATES.md](EXCHANGE_RATES.md) and execute
+`php examples/rates.php`. Laravel remains pending. Do not assume any API is released until its version
 and installation checks are recorded in `DELIVERY.md` and the changelog.
 
 ## Selection rule

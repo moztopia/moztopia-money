@@ -148,6 +148,15 @@ final readonly class Money implements JsonSerializable
     }
 
     /**
+     * Convert explicitly with an observation and preserve complete calculation evidence.
+     */
+
+    public function convert(ExchangeRate $rate, ?RoundingMode $rounding = null): ConversionResult
+    {
+        return ConversionResult::convert($this, $rate, $rounding);
+    }
+
+    /**
      * Multiply by a dimensionless decimal string, always returning Calculation.
      */
 

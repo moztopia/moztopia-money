@@ -16,7 +16,7 @@ compatibility even when method signatures remain unchanged.
 
 1. #2 contracts and independent reference vectors — checkpoint pushed; draft PR #7.
 2. #3 monetary engine — implemented; verification and review in progress.
-3. #4 rates, conversion and cache — blocked by Stage 2.
+3. #4 rates, conversion and cache — implemented; verification and review in progress.
 4. #5 Laravel integration — blocked by Stage 3.
 5. #6 packaging, agent-first documentation and release checks — blocked by Stage 4.
 
@@ -63,6 +63,22 @@ and 8.5.13 install only moztopia/money and brick/math, run core smoke operations
 and verify Illuminate is absent. These path installs inspect the working source;
 immutable release/archive installation and full PHP-version test matrices remain
 Stage 5 work. No release availability or Laravel support is claimed yet.
+
+## Stage 3 checks
+
+Offline provider fixtures verify exact long numeric/exponent parsing, requested
+versus observed historical dates, explicit fallback bounds, provider replacement,
+conversion reference vectors/replay, bounded retries, permanent failures, malformed
+JSON/provider data, cache expiry/invalidation, independent historical TTLs, stale
+marking/cutoffs, cache-configuration isolation and local capacity/recursion controls.
+`php examples/rates.php` verifies the agent integration recipe without network.
+Combined core/exchange suite: 175 Pest tests and 3,483 assertions under PHP 8.4.27.
+
+Separate opt-in live verification on 2026-11-22 used the actual SDK CurlTransport
+and Frankfurter v2 ECB selection for USD/THB on 2026-01-15. The response preserved
+rate `31.395` as a string, actual/source date 2026-01-15, requested date 2026-01-15,
+provider Frankfurter, source ECB and a separate UTC retrieval timestamp. This live
+check is not part of ordinary tests or CI and provides no uptime guarantee.
 
 Wiki readiness was owner-confirmed. Its initial Home page is commit
 `3c945e95426f01782f94e76e049cc7a985e9b510` on `master`. Organization Team plan,

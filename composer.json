@@ -11,6 +11,9 @@
         "pestphp/pest": "^3.8 || ^4.0 || ^5.0",
         "phpstan/phpstan": "^2.1"
     },
+    "suggest": {
+        "ext-curl": "Required only for the default CurlTransport; custom HttpTransport implementations may replace it."
+    },
     "autoload": {
         "psr-4": {
             "Moztopia\\Money\\": "src/"

@@ -34,6 +34,24 @@ final class Arithmetic
     }
 
     /**
+     * Normalize a validated finite provider numeric token to an exact decimal string.
+     */
+
+    public static function decimalToken(string $token): string
+    {
+        if (strlen($token) > 4096 || !preg_match('/\A-?(?:0|[1-9][0-9]*)(?:\.[0-9]+)?(?:[eE]([+-]?[0-9]+))?\z/D', $token, $match)) {
+            throw new InvalidAmount('Provider numeric token exceeds supported exact parsing bounds.');
+        }
+        if (isset($match[1])) {
+            $exponentDigits = ltrim(ltrim($match[1], '+-'), '0');
+            if (strlen($exponentDigits) > 5 || abs((int) $match[1]) > 10000) {
+                throw new InvalidAmount('Provider numeric exponent exceeds supported exact parsing bounds.');
+            }
+        }
+        return self::guard(fn (): string => (string) BigRational::of($token)->toBigDecimal());
+    }
+
+    /**
      * Perform an exact operation without exposing engine values.
      */
 
