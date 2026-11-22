@@ -1,0 +1,20 @@
+# moztopia/money
+
+> Agent-first PHP SDK for exact monetary values and replaceable reference rates.
+> Implementation in progress. No published installable version is claimed yet.
+
+- [Integration instructions](docs/AGENT_INTEGRATION.md): start here when consuming
+  the package; exact input, operation types, rounding, conversion and storage rules.
+- [Contracts](docs/CONTRACTS.md): mathematical semantics and canonical protocols.
+- [Standard Money schema](resources/schema/money.schema.json): integer minor units
+  as strings, never floating-point or major-unit JSON amounts.
+- [Custom Money schema](resources/schema/custom-money.schema.json): registry identity,
+  immutable definition version and precision must match the receiver's registry.
+- [Reference vectors](tests/Fixtures/reference-vectors.json): fixed expected behavior.
+- [Delivery evidence](docs/DELIVERY.md): stage status and verification limitations.
+- [Maintenance instructions](AGENTS.md): only for modifying this repository.
+
+Never invent an installation claim or API from the baseline alone. Follow the
+released package reference and executable examples once verification is complete.
+
+by-dolly

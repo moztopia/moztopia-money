@@ -1,0 +1,23 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Moztopia custom Money protocol 1",
+    "description": "Receiver must independently resolve and verify the immutable custom currency definition.",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["protocol", "amount", "currency"],
+    "properties": {
+        "protocol": {"const": 1},
+        "amount": {"type": "string", "pattern": "^(0|-?[1-9][0-9]*)$"},
+        "currency": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["code", "registry", "version", "minorUnits"],
+            "properties": {
+                "code": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]{0,31}$"},
+                "registry": {"type": "string", "minLength": 1, "maxLength": 255},
+                "version": {"type": "string", "minLength": 1, "maxLength": 128},
+                "minorUnits": {"type": "integer", "minimum": 0, "maximum": 18}
+            }
+        }
+    }
+}

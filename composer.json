@@ -1,0 +1,37 @@
+{
+    "name": "moztopia/money",
+    "description": "Exact monetary primitives and replaceable reference rates for AI agents and PHP applications.",
+    "type": "library",
+    "require": {
+        "php": "~8.3.36 || ~8.4.27 || ~8.5.12",
+        "brick/math": "^1.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.25",
+        "pestphp/pest": "^3.8 || ^4.0 || ^5.0",
+        "phpstan/phpstan": "^2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Moztopia\\Money\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Moztopia\\Money\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "pest",
+        "lint": "pint --test",
+        "analyse": "phpstan analyse --memory-limit=512M"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        },
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
