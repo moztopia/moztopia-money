@@ -6,9 +6,10 @@ live in root `AGENTS.md`.
 
 ## Current availability
 
-The SDK is being implemented. Do not assume any API is released until its
-version and installation checks are recorded in `DELIVERY.md` and the changelog.
-The contracts below are the implementation baseline, not an installation claim.
+The core is implemented on the development work branch. Read [CORE.md](CORE.md)
+and execute `php examples/core.php` for current verified recipes. Exchange rates
+and Laravel remain pending. Do not assume any API is released until its version
+and installation checks are recorded in `DELIVERY.md` and the changelog.
 
 ## Selection rule
 
@@ -40,7 +41,7 @@ when inexact without a policy. Allocation returns an ordered list of Money.
 Conversion returns ConversionResult. Rate lookup returns ExchangeRate.
 
 The normative schemas, arithmetic and failure policies are in `CONTRACTS.md`.
-Executable package usage examples will be added with each working stage; do not
-copy speculative method signatures into an application.
+Executable package examples are added with each working stage; do not copy
+speculative method signatures into an application.
 
 by-dolly

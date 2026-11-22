@@ -6,6 +6,8 @@
 - [Integration instructions](docs/AGENT_INTEGRATION.md): start here when consuming
   the package; exact input, operation types, rounding, conversion and storage rules.
 - [Contracts](docs/CONTRACTS.md): mathematical semantics and canonical protocols.
+- [Core recipes](docs/CORE.md): implemented exact values, calculations, allocation,
+  custom currencies, formatting and serialization; execute examples/core.php.
 - [Standard Money schema](resources/schema/money.schema.json): integer minor units
   as strings, never floating-point or major-unit JSON amounts.
 - [Custom Money schema](resources/schema/custom-money.schema.json): registry identity,
