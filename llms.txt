@@ -5,6 +5,12 @@
 
 - [Integration instructions](docs/AGENT_INTEGRATION.md): start here when consuming
   the package; exact input, operation types, rounding, conversion and storage rules.
+- [Installation](docs/INSTALLATION.md): actual availability and runtime requirements.
+- [Quick start](docs/QUICKSTART.md): executable five-minute integration recipes.
+- [Consuming AGENTS instructions](docs/CONSUMING_AGENTS.md): copyable application rules.
+- [API reference](docs/API.md): generated exact public signatures, defaults and properties.
+- [Failure handling](docs/ERRORS.md): owned exceptions and intentional recovery.
+- [Dependencies](docs/DEPENDENCIES.md): implementation boundary and replacement risks.
 - [Contracts](docs/CONTRACTS.md): mathematical semantics and canonical protocols.
 - [Core recipes](docs/CORE.md): implemented exact values, calculations, allocation,
   custom currencies, formatting and serialization; execute examples/core.php.
@@ -18,6 +24,7 @@
   immutable definition version and precision must match the receiver's registry.
 - [Reference vectors](tests/Fixtures/reference-vectors.json): fixed expected behavior.
 - [Delivery evidence](docs/DELIVERY.md): stage status and verification limitations.
+- [Acceptance evidence](docs/ACCEPTANCE.md): definition-of-done checks and open gates.
 - [Maintenance instructions](AGENTS.md): only for modifying this repository.
 
 Never invent an installation claim or API from the baseline alone. Follow the

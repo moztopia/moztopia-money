@@ -149,8 +149,8 @@ declared storage ranges and currency sources rather than inferred application po
 ## Concrete API design decisions
 
 The namespace is `Moztopia\Money`. Classes are final immutable values where
-appropriate. Contracts below are design declarations for the later implementation,
-not executable usage examples or a claim that those classes already exist.
+appropriate. These contracts are implemented; [API.md](API.md) is generated from
+the actual signatures. Release availability is recorded separately in DELIVERY.md.
 
 - `Money::of(amount, currency)` accepts a validated decimal string and Currency
   or a standard code. `Money::fromMinorUnits(amount, currency)` accepts an integer

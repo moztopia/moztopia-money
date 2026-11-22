@@ -96,6 +96,9 @@ final class CurrencyContext
             if (in_array($amountKey, $mapping, true)) {
                 throw new StorageFailure('Currency identity fields must not overlap the amount attribute.');
             }
+            if ($currency->registry !== null && $currency->version !== null) {
+                self::registry()->get($currency->registry, $currency->code, $currency->version)->assertCompatible($currency);
+            }
             return [
                 $mapping['code'] => $currency->code,
                 $mapping['registry'] => $currency->registry,

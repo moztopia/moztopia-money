@@ -99,7 +99,8 @@ cached normally by Laravel; the registry is immutable once constructed:
 Alias/mapping names and column identifiers use simple ASCII identifiers up to 64
 characters. Registry identity and immutable version remain the full core values.
 Full mappings require four distinct columns and reject missing/unknown definitions
-or mismatching precision. A single code column is reserved for standard currencies.
+or mismatching precision on both assignment and retrieval. A single code column is
+reserved for standard currencies.
 Changing a fixed custom alias's identity requires an explicit data migration;
 never silently reinterpret stored minor units using a new definition.
 

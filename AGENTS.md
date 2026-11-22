@@ -19,6 +19,11 @@ The complete owner baseline is [docs/BASELINE.md](docs/BASELINE.md).
   contract. Change a vector only with mathematical evidence and compatibility review.
 - Every published example must execute against the released API. Keep agent
   instructions short, explicit about return types and safe failure handling.
+- Regenerate `docs/API.md` with `php tools/api-reference.php` after changing public
+  signatures. Run its `--check` mode before handoff. Quick-start PHP snippets are
+  executed by documentation tests; preserve their markers and expected results.
+- Consumer instructions belong in `docs/CONSUMING_AGENTS.md`. Keep them focused on
+  installing and using the SDK; repository maintenance follows this file.
 - Follow the five stages in [docs/DELIVERY.md](docs/DELIVERY.md). Incomplete stages
   and unverified installation/publication remain open in the owning Project.
 

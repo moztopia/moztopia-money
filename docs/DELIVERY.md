@@ -6,8 +6,10 @@ Project: https://github.com/orgs/moztopia/projects/71
 Parent issue: https://github.com/moztopia/moztopia-money/issues/1
 
 Baseline: empty `develop` commit `49e0b9c42337fe54c07d8a21af3a58ed630ca01a`.
-No prior published contract/version. Initial source baseline is 0.0.0. First
-releasable feature integration normally advances to 0.1.0 under shared policy.
+No prior published contract/version. Initial source baseline is 0.0.0. The complete
+SDK candidate prepares 0.1.0 under shared policy: a first feature capability with
+no prior supported consumer contract to break. Stage PRs are reviewable checkpoints;
+the complete SDK is one releasable integration, not five partial package releases.
 Composer versions are derived from immutable numeric tags, not a hardcoded
 Composer `version` key. Mathematical behavior and protocol changes count for
 compatibility even when method signatures remain unchanged.
@@ -18,7 +20,8 @@ compatibility even when method signatures remain unchanged.
 2. #3 monetary engine — implemented; verification and review in progress.
 3. #4 rates, conversion and cache — implemented; verification and review in progress.
 4. #5 Laravel integration — implemented; verification and review in progress.
-5. #6 packaging, agent-first documentation and release checks — blocked by Stage 4.
+5. #6 packaging, agent-first documentation and release checks — in progress on the
+   verified Stage 4 checkpoint; review/integration remains open.
 
 Every stage requires relevant tests, documented decisions, public-contract review
 and a reviewable checkpoint. Stage completion does not imply full SDK completion.
@@ -107,6 +110,32 @@ build required a per-build hostname override after build-time DNS failed; no hos
 or daemon configuration changed. The disposable database used a reviewed private
 subnet because automatic Docker address pools were exhausted; unrelated networks
 and services were preserved. No application server or host port was introduced.
+
+## Stage 5 checks in progress
+
+The expanded suite passes 201 tests / 4,104 assertions under PHP 8.4.27, including
+executable quick-start/configuration examples and all-public engine-type/float-token
+contract checks. Pint passes 84 files; PHPStan max, 107 independent vectors and
+generated API reference checks pass. Actionlint validates the CI workflow locally.
+The actual GitHub run is still pending publication of this checkpoint. Composer
+audit reports no security vulnerability advisories for the resolved dependencies.
+
+The core/Laravel suite also passes under independently installed PHP 8.3.36 and
+8.5.13 development dependency trees. The generated reference initially exposed a
+PHP 8.5 reflection difference for self types; the generator now canonicalizes them
+to fully qualified declaring names; checks pass under all three tested runtimes.
+
+A fixed Composer tar archive installed successfully in no-dev standalone PHP
+8.4.27 and fresh Laravel 13.43.0 consumers, with discovery, SQLite persistence,
+validation and configuration caching off/on. PHP 8.3.36 also passed both archive
+consumer probes. These are local synthetic artifact versions, not published tags
+or Packagist entries. The repeatable tool checks that source and agent guides
+actually ship unchanged. PHP 8.5.13 also passed both archive consumer probes.
+
+Root AGENTS.md, copyable consuming-agent instructions, llms.txt, generated API,
+executable five-minute guide, failure handling, dependency inventory, contribution
+and release guidance are now present. [ACCEPTANCE.md](ACCEPTANCE.md) maps the
+definition of done to evidence and explicitly preserves open release gates.
 
 Wiki readiness was owner-confirmed. Its initial Home page is commit
 `3c945e95426f01782f94e76e049cc7a985e9b510` on `master`. Organization Team plan,

@@ -4,6 +4,11 @@ Audience: AI agents implementing monetary behavior in consuming applications.
 This file is shipped with the Composer package. Repository maintenance rules
 live in root `AGENTS.md`.
 
+Start with [INSTALLATION.md](INSTALLATION.md), then the executable
+[five-minute quick start](QUICKSTART.md). Copy the relevant
+[consuming-agent instructions](CONSUMING_AGENTS.md) into the application's guidance.
+Look up exact signatures in [API.md](API.md) and safe recovery in [ERRORS.md](ERRORS.md).
+
 ## Current availability
 
 The core is implemented on the development work branch. Read [CORE.md](CORE.md)

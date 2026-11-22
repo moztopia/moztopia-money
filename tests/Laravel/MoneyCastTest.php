@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Moztopia\Money\Currency;
 use Moztopia\Money\Exception\CurrencyMismatch;
 use Moztopia\Money\Exception\InvalidAmount;
+use Moztopia\Money\Exception\InvalidCurrency;
 use Moztopia\Money\Exception\StorageFailure;
 use Moztopia\Money\Laravel\Casts\MoneyCast;
 use Moztopia\Money\Money;
@@ -113,6 +114,15 @@ it('rejects scalars ambiguous currency and conflicting definitions before storag
     expect(fn () => $record->minor)->toThrow(InvalidAmount::class);
     $record->setRawAttributes(['decimal_text' => 1.5]);
     expect(fn () => $record->decimal_text)->toThrow(StorageFailure::class);
+});
+
+it('rejects unregistered and conflicting variable custom definitions before persistence', function () {
+    $record = new MoneyRecord();
+    $unknown = Currency::custom('POINT', 3, 'unknown.example/rewards', '1');
+    $conflict = Currency::custom('POINT', 2, 'example.org/rewards', '1');
+    expect(fn () => $record->identity = Money::of('1', $unknown))->toThrow(InvalidCurrency::class);
+    expect(fn () => $record->identity = Money::of('1', $conflict))->toThrow(CurrencyMismatch::class);
+    expect($record->getAttributes())->not->toHaveKey('identity');
 });
 
 it('enforces declared integer and decimal bounds without relying on driver truncation', function () {
