@@ -1,0 +1,10 @@
+{
+    "preset": "psr12",
+    "notPath": ["tests/Fixtures/weak-caller.php"],
+    "rules": {
+        "declare_strict_types": true,
+        "blank_line_after_opening_tag": true,
+        "phpdoc_separation": true,
+        "no_blank_lines_after_phpdoc": false
+    }
+}
