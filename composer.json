@@ -20,7 +20,7 @@
         "phpstan/phpstan": "^2.1"
     },
     "suggest": {
-        "ext-curl": "Required only for the default CurlTransport; custom HttpTransport implementations may replace it.",
+        "ext-curl": "With libcurl 7.85+ for the default CurlTransport; custom HttpTransport implementations may replace it.",
         "illuminate/cache": "^13.0 for optional native Laravel cache integration.",
         "illuminate/contracts": "^13.0 for optional native Laravel adapter contracts.",
         "illuminate/database": "^13.0 for optional Eloquent Money casts.",

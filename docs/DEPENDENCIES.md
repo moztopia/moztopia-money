@@ -27,7 +27,9 @@ verification and demonstrate a concrete benefit. Replacing mature arithmetic
 assumes permanent responsibility for division, signs, normalization, overflow,
 rounding and resource use. Ownership alone is insufficient justification.
 
-ext-curl is optional, used only by CurlTransport for HTTPS/timeouts/body limits.
+ext-curl with libcurl 7.85+ is optional, used only by CurlTransport for
+HTTPS/timeouts/body limits. A missing extension or unsupported HTTPS protocol option
+fails with a permanent TransportFailure before fetching, rather than a PHP error.
 HttpTransport is Moztopia-owned and replaceable. Tests use fixture transport;
 separate opt-in live checks verify actual connectivity. Replacing cURL requires
 preserving TLS verification, finite timing/retry budgets and response limits.

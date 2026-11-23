@@ -27,7 +27,7 @@ agent documentation ship with its distribution.
   declared. Composer enforces the security floors; do not bypass platform checks.
 - Core runtime dependency: `brick/math:^1.0`. Laravel, network connectivity,
   native bcmath/gmp and optional intl are not required for core operations.
-- Actual default HTTP requests need ext-curl. Inject HttpTransport to replace
+- Actual default HTTP requests need ext-curl with libcurl 7.85+. Inject HttpTransport to replace
   connectivity; offline Money calculations never need it.
 - Optional native integration targets Laravel 13. Composer discovery handles
   registration in an existing Laravel application. See [LARAVEL.md](LARAVEL.md).

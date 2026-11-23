@@ -35,6 +35,9 @@ final readonly class CurlTransport implements HttpTransport
         if (!function_exists('curl_init')) {
             throw new TransportFailure('Install ext-curl or inject an HttpTransport implementation.', false);
         }
+        if (!defined('CURLOPT_PROTOCOLS_STR')) {
+            throw new TransportFailure('CurlTransport requires libcurl 7.85+ for HTTPS protocol restrictions; upgrade ext-curl or inject HttpTransport.', false);
+        }
         $handle = curl_init($url);
         if ($handle === false) {
             throw new TransportFailure('Unable to initialize HTTP transport.', false);

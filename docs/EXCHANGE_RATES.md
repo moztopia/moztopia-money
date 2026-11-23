@@ -96,7 +96,7 @@ payloads use versioned primitive arrays and validate definitions on reconstructi
 
 Frankfurter uses the official v2 `/rates` API with `base`, `quotes`, optional `date`
 and `providers`, and `expand=providers`. Inject HttpTransport to replace connectivity.
-CurlTransport needs optional ext-curl only for actual HTTP. It verifies HTTPS,
+CurlTransport needs optional ext-curl with libcurl 7.85+ only for actual HTTP. It verifies HTTPS,
 does not follow redirects, limits connection time to 2 seconds, total response
 time to 5 seconds and body size to 2 MiB by default; all are configurable.
 

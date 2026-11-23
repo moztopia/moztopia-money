@@ -14,5 +14,6 @@
 - Reject unknown/conflicting variable custom definitions before persistence.
 - License the SDK under Apache-2.0, as selected by the owner.
 - Enforce elapsed-time cache deadlines across daylight-saving clock transitions.
+- Diagnose unsupported cURL builds before attempting the HTTPS-only transport.
 
 by-dolly
