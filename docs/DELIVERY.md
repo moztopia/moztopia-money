@@ -121,6 +121,16 @@ all 201 tests / 4,104 assertions, Pint and PHPStan remain clean. Archive verific
 now checks that LICENSE and NOTICE ship byte-for-byte with the agent guides.
 The earlier missing-license CI failures below are historical checkpoint evidence.
 
+Licensed checkpoint `62eb77bdd095eedd1c3614b7ce37affa673f90e2` passed all hosted
+checks in [run 45096032930](https://github.com/moztopia/moztopia-money/actions/runs/45096032930).
+Final audit then found that a non-UTC injected clock could extend a TTL through a
+repeated daylight-saving hour. Deadline arithmetic now uses UTC elapsed seconds
+for freshness, stale cutoff and local retention. Explicit UTC transition vectors
+cover spring/fall and exact stale/retention boundaries. The expanded local suite
+passes 204 tests / 4,116 assertions; strict metadata, Pint, PHPStan, API checks,
+executable examples and all 107 independent reference checks pass. The corrected
+tip requires its own hosted CI pass before integration.
+
 The expanded suite passes 201 tests / 4,104 assertions under PHP 8.4.27, including
 executable quick-start/configuration examples and all-public engine-type/float-token
 contract checks. Pint passes 84 files; PHPStan max, 107 independent vectors and

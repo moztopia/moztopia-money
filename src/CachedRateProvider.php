@@ -8,6 +8,7 @@ use Moztopia\Money\Exception\CacheFailure;
 use Moztopia\Money\Exception\ProviderFailure;
 use Moztopia\Money\Exception\RateUnavailable;
 use Moztopia\Money\Exception\TransportFailure;
+use Moztopia\Money\Internal\Date\Date;
 
 /**
  * Apply provider-independent caching with explicit freshness and stale-on-error policy.
@@ -81,7 +82,7 @@ final readonly class CachedRateProvider implements ExchangeRateProvider
             }
             $ttl = $request->date === null ? $this->ttlSeconds : $this->historicalTtlSeconds;
             $now = $this->clock->now();
-            $newEntry = new RateCacheEntry($rate, $now, $now->modify('+'.$ttl.' seconds'));
+            $newEntry = new RateCacheEntry($rate, $now, Date::afterSeconds($now, $ttl));
             $retention = $ttl + ($this->allowStaleOnError ? $this->maxStaleSeconds : 0);
             $this->cache->put($key, $newEntry, $retention);
             return $rate;

@@ -6,10 +6,47 @@ use Moztopia\Money\ArrayRateCache;
 use Moztopia\Money\CachedRateProvider;
 use Moztopia\Money\Exception\ProviderFailure;
 use Moztopia\Money\ExchangeRate;
+use Moztopia\Money\RateCacheEntry;
 use Moztopia\Money\RateFreshness;
 use Moztopia\Money\RateRequest;
 use Moztopia\Money\Tests\Support\FakeRateProvider;
 use Moztopia\Money\Tests\Support\FrozenClock;
+
+it('expires after elapsed seconds across daylight-saving transitions', function (string $start) {
+    $zone = new DateTimeZone('America/New_York');
+    $startUtc = new DateTimeImmutable($start);
+    $clock = new FrozenClock($startUtc->setTimezone($zone));
+    $source = new FakeRateProvider(new ExchangeRate('USD', 'THB', '35', '2026-01-15', 'manual', $clock->now()));
+    $provider = new CachedRateProvider($source, clock: $clock, ttlSeconds: 3600);
+    $request = new RateRequest('USD', 'THB');
+    $original = $provider->get($request);
+    $source->fail = true;
+    $clock->instant = $startUtc->modify('+3599 seconds')->setTimezone($zone);
+    $hit = $provider->get($request);
+    expect($hit->freshness)->toBe(RateFreshness::FRESH_CACHE)->and($hit->retrievedAt)->toBe($original->retrievedAt);
+    $clock->instant = $startUtc->modify('+3600 seconds')->setTimezone($zone);
+    expect(fn () => $provider->get($request))->toThrow(ProviderFailure::class);
+    expect($source->calls)->toBe(2);
+})->with(['fall back' => '2026-11-01T05:30:00Z', 'spring forward' => '2026-03-08T06:30:00Z']);
+
+it('bounds stale use and local retention by elapsed seconds across a repeated hour', function () {
+    $zone = new DateTimeZone('America/New_York');
+    $start = new DateTimeImmutable('2026-11-01T04:59:00Z');
+    $expiry = new DateTimeImmutable('2026-11-01T05:00:00Z');
+    $end = new DateTimeImmutable('2026-11-01T06:00:00Z');
+    $clock = new FrozenClock($start->setTimezone($zone));
+    $entry = new RateCacheEntry(
+        new ExchangeRate('USD', 'THB', '35', '2026-01-15', 'manual'),
+        $clock->now(),
+        $expiry->setTimezone($zone)
+    );
+    $cache = new ArrayRateCache($clock);
+    $cache->put('dst-window', $entry, 3660);
+    $clock->instant = $end->modify('-1 second')->setTimezone($zone);
+    expect($entry->allowsStale($clock->now(), 3600))->toBeTrue()->and($cache->get('dst-window'))->toBe($entry);
+    $clock->instant = $end->setTimezone($zone);
+    expect($entry->allowsStale($clock->now(), 3600))->toBeFalse()->and($cache->get('dst-window'))->toBeNull();
+});
 
 it('caches fresh rates without changing observation or retrieval timestamps', function () {
     $clock = new FrozenClock(new DateTimeImmutable('2026-01-16T12:00:00Z'));

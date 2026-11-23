@@ -6,6 +6,7 @@ namespace Moztopia\Money;
 
 use DateTimeImmutable;
 use Moztopia\Money\Exception\CacheFailure;
+use Moztopia\Money\Internal\Date\Date;
 
 /**
  * Preserve a rate observation and independent cache freshness timestamps.
@@ -46,6 +47,6 @@ final readonly class RateCacheEntry
     public function allowsStale(DateTimeImmutable $now, int $maxStaleSeconds): bool
     {
         return $maxStaleSeconds > 0 && $now >= $this->expiresAt
-            && $now < $this->expiresAt->modify('+'.$maxStaleSeconds.' seconds');
+            && $now < Date::afterSeconds($this->expiresAt, $maxStaleSeconds);
     }
 }

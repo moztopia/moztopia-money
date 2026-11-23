@@ -68,6 +68,8 @@ The default cache shares the injected provider-wrapper clock for deterministic t
 
 Default latest TTL is 3600 seconds and historical TTL 86400 seconds. Configure each
 independently. Historical rates can be corrected; caching does not make them immutable.
+TTL, stale cutoff and local retention use elapsed seconds independent of the
+injected clock's timezone, including daylight-saving transitions.
 Keys distinguish full currency definitions, pair, requested date, historical policy,
 lookback, provider configuration, TTL and stale policy. `invalidate(RateRequest)`
 removes the exact query/configuration entry.

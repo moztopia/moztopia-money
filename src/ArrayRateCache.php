@@ -7,6 +7,7 @@ namespace Moztopia\Money;
 use Closure;
 use DateTimeImmutable;
 use Moztopia\Money\Exception\CacheFailure;
+use Moztopia\Money\Internal\Date\Date;
 
 /**
  * Provide an ephemeral process-local cache for ordinary synchronous PHP consumers.
@@ -73,7 +74,7 @@ final class ArrayRateCache implements RateCache
                 unset($this->entries[$oldest]);
             }
         }
-        $this->entries[$key] = ['entry' => $entry, 'until' => $entry->cachedAt->modify('+'.$retentionSeconds.' seconds')];
+        $this->entries[$key] = ['entry' => $entry, 'until' => Date::afterSeconds($entry->cachedAt, $retentionSeconds)];
     }
 
     /**

@@ -40,6 +40,8 @@ separate policies/providers/definitions, invalidation, locks, backend failures,
 primitive cache restoration and rejection of unknown identities. Native two-process
 database-cache verification established exactly one upstream call and two successful
 workers. This is evidence for the tested backend, not every shared cache driver.
+Explicit UTC transition vectors verify elapsed TTL, stale and retention boundaries
+even when an injected clock uses a timezone with daylight-saving changes.
 
 ## Protocol and presentation (items 27–29)
 
@@ -73,8 +75,8 @@ published Laravel configuration. Generated API signatures are checked for drift.
 
 - Final review/integration of all stage PRs and impact-classified immutable source
   versions/tags under the repository's existing workflow.
-- A fully green remote CI run. Checkpoint 2aad56e has successful runtime tests,
-  quality and installation jobs, but strict validation fails for the missing license.
+- A fully green CI run for the final tip. Licensed checkpoint 62eb77b passed every
+  job; the subsequent elapsed-time cache correction needs its own validated run.
 - Numeric-version Composer installation and confirmed distribution mechanism.
   Archive installation does not establish Packagist availability.
 - Final release consistency audit, including wiki/source links and exact tested

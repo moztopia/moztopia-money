@@ -9,13 +9,22 @@ use DateTimeZone;
 use Moztopia\Money\Exception\RateUnavailable;
 
 /**
- * Validate date-only provider contracts independently of retrieval timestamps.
+ * Validate provider dates and calculate elapsed-time cache deadlines.
  *
  * @internal
  */
 
 final class Date
 {
+    /**
+     * Add elapsed seconds independently of the clock's timezone or DST transitions.
+     */
+
+    public static function afterSeconds(DateTimeImmutable $instant, int $seconds): DateTimeImmutable
+    {
+        return $instant->setTimezone(new DateTimeZone('UTC'))->modify('+'.$seconds.' seconds');
+    }
+
     /**
      * Reject normalization of invalid or ambiguous calendar dates.
      */
