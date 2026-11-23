@@ -10,8 +10,8 @@ Include affected SDK/PHP/Laravel versions, a minimal synthetic reproducer, expec
 and observed behavior, and impact on precision, identity, parsing or availability.
 Use no real account data or external-service secrets.
 
-There is no published supported release yet. Security fixes and supported release
-lines will be recorded in the changelog and release notes. Never bypass Composer
+Report issues against the latest verified numeric tag. Security fixes and supported
+release lines are recorded in the changelog and release notes. Never bypass Composer
 security/platform checks to make an installation succeed.
 
 by-dolly

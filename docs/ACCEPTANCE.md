@@ -2,7 +2,8 @@
 
 This checklist maps the owner's numbered baseline to concrete checks. A local
 check is not a publication claim. Current source is unreleased; final integration,
-license selection, numeric tagging and distribution verification remain open.
+numeric tagging and distribution verification remain open. The owner selected
+Apache-2.0; LICENSE, NOTICE and Composer metadata carry that decision.
 
 ## Monetary contracts (items 2–10)
 
@@ -70,7 +71,6 @@ published Laravel configuration. Generated API signatures are checked for drift.
 
 ## Open release gates (items 1, 37–38)
 
-- Owner-selected open-source license and clean strict Composer validation.
 - Final review/integration of all stage PRs and impact-classified immutable source
   versions/tags under the repository's existing workflow.
 - A fully green remote CI run. Checkpoint 2aad56e has successful runtime tests,

@@ -9,9 +9,10 @@ Start with [INSTALLATION.md](INSTALLATION.md), then the executable
 [consuming-agent instructions](CONSUMING_AGENTS.md) into the application's guidance.
 Look up exact signatures in [API.md](API.md) and safe recovery in [ERRORS.md](ERRORS.md).
 
-## Current availability
+## Installation and verification
 
-The core is implemented on the development work branch. Read [CORE.md](CORE.md)
+Install a verified numeric version through the documented Composer VCS setup.
+Read [CORE.md](CORE.md)
 and execute `php examples/core.php` for current verified recipes. For providers,
 conversion and cache use [EXCHANGE_RATES.md](EXCHANGE_RATES.md) and execute
 `php examples/rates.php`. For Laravel use [LARAVEL.md](LARAVEL.md): native

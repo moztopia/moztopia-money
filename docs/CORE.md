@@ -1,8 +1,8 @@
 # Agent recipes: exact core
 
 Use `Moztopia\Money\Money`, `Calculation`, `Currency`, `CurrencyRegistry`,
-`MoneyFormatter`, and `RoundingMode`. These APIs work on the current development
-branch. No Packagist release availability is claimed yet.
+`MoneyFormatter`, and `RoundingMode`. These APIs are validated against executable
+recipes. Use the documented Composer VCS installation; no Packagist listing is claimed.
 
 Execute `php examples/core.php` after installing dependencies to verify the
 integration recipe against the actual code.

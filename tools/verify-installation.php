@@ -37,7 +37,7 @@ $write($temporary.'/consumer/composer.json', $manifest);
 $run(['composer', 'install', '--no-dev', '--prefer-dist', '--no-interaction', '--no-progress'], $temporary.'/consumer');
 $run(['composer', 'check-platform-reqs', '--no-dev'], $temporary.'/consumer');
 $installed = $temporary.'/consumer/vendor/moztopia/money';
-foreach (['AGENTS.md', 'llms.txt', 'docs/AGENT_INTEGRATION.md', 'docs/CONSUMING_AGENTS.md', 'docs/QUICKSTART.md',
+foreach (['LICENSE', 'NOTICE', 'AGENTS.md', 'llms.txt', 'docs/AGENT_INTEGRATION.md', 'docs/CONSUMING_AGENTS.md', 'docs/QUICKSTART.md',
     'docs/API.md', 'docs/CONTRACTS.md', 'resources/currencies.json', 'src/Money.php'] as $file) {
     if (!is_file($installed.'/'.$file) || hash_file('sha256', $root.'/'.$file) !== hash_file('sha256', $installed.'/'.$file)) {
         throw new RuntimeException('Packaged source or agent documentation differs: '.$file);

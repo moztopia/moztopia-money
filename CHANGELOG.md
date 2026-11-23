@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0 (unreleased candidate)
+## 0.1.0
 
 - Establish the agent-first SDK baseline, monetary contracts and reference vectors.
 - Implement exact Money and rational Calculation, explicit rounding, conservative
@@ -12,5 +12,6 @@
 - Add consuming-agent instructions, executable quick start, generated API reference,
   dependency/release guidance, supported PHP CI and immutable consumer verification.
 - Reject unknown/conflicting variable custom definitions before persistence.
+- License the SDK under Apache-2.0, as selected by the owner.
 
 by-dolly

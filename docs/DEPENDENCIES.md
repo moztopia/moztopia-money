@@ -7,6 +7,11 @@ rounding and finalized Money. There is no public engine-plugin architecture.
 
 ## Runtime inventory
 
+Moztopia Money is Apache-2.0 licensed; the repository owner selected that license
+explicitly. LICENSE contains the official unmodified text and NOTICE identifies
+the package. Dependencies retain their own licenses; Brick Math is MIT licensed
+and its license ships with its separately installed Composer package.
+
 `brick/math:^1.0` is the sole Composer runtime library. Only
 `src/Internal/Arithmetic/Arithmetic.php` imports Brick types. That boundary handles
 big integers, decimal-to-rational parsing, rational arithmetic/comparison and exact

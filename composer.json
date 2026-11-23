@@ -2,6 +2,7 @@
     "name": "moztopia/money",
     "description": "Exact monetary primitives and replaceable reference rates for AI agents and PHP applications.",
     "type": "library",
+    "license": "Apache-2.0",
     "keywords": ["money", "currency", "precision", "exchange-rates", "ai-agents", "laravel"],
     "homepage": "https://github.com/moztopia/moztopia-money",
     "support": {

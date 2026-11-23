@@ -1,21 +1,25 @@
 # Installation and availability
 
-The package is being verified on issue branches. No numeric release or Packagist
-listing is claimed yet. Check [DELIVERY.md](DELIVERY.md) and the repository's tags
-before selecting a version. Do not assume the package name alone is installable
-from the default Composer registry.
+Distribution uses the public Git repository and immutable numeric tags. Check
+[DELIVERY.md](DELIVERY.md) and the repository's tags before selecting a version.
+An unreleased development branch is not a production version. Packagist
+availability is not claimed; configure the Composer VCS repository explicitly.
 
-The intended published command is `composer require moztopia/money:^0.1` after
-that version is actually tagged and registered. Until then, use an explicitly
-selected development branch through Composer's VCS repository support for
-evaluation, and keep its resolved revision in the consuming application's lockfile.
-An unreleased development branch is not a production version.
+For the initial `0.1.0` source version, after its numeric tag is verified:
 
-For a tagged VCS distribution, configure repository URL
-`https://github.com/moztopia/moztopia-money` with Composer repository type `vcs`,
-then require the verified numeric version. `docs/DELIVERY.md` records when immutable
-artifact installs are actually tested. Do not add the SDK's own development
-dependencies to the consuming application.
+```sh
+composer config repositories.moztopia-money vcs https://github.com/moztopia/moztopia-money
+composer require moztopia/money:0.1.0
+```
+
+The same commands apply in ordinary PHP and an existing Laravel 13 application.
+The consuming application's lockfile pins the resolved source revision. Keep it
+under the application's dependency policy. The SDK's development dependencies
+are not runtime requirements of the consuming application. Numeric source tagging
+does not imply a GitHub release, Packagist listing or production/main promotion.
+
+The package is licensed under [Apache-2.0](../LICENSE); [NOTICE](../NOTICE) and the
+agent documentation ship with its distribution.
 
 ## Runtime
 

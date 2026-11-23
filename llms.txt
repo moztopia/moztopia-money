@@ -1,7 +1,7 @@
 # moztopia/money
 
 > Agent-first PHP SDK for exact monetary values and replaceable reference rates.
-> Implementation in progress. No published installable version is claimed yet.
+> Install verified numeric Git tags through the documented Composer VCS setup.
 
 - [Integration instructions](docs/AGENT_INTEGRATION.md): start here when consuming
   the package; exact input, operation types, rounding, conversion and storage rules.
@@ -28,6 +28,6 @@
 - [Maintenance instructions](AGENTS.md): only for modifying this repository.
 
 Never invent an installation claim or API from the baseline alone. Follow the
-released package reference and executable examples once verification is complete.
+installed version's package reference and executable examples.
 
 by-dolly

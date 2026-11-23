@@ -35,11 +35,11 @@ stack is scaffolded. Production runtime is consumer-owned and unverified.
 
 ## Pending release evidence
 
-Owner-selected license; final stage review/integration; CI and supported PHP
-matrix; immutable archive/VCS installation; complete API/dependency/reference
-documentation and release audit; immutable source version/tag and actual Composer
-distribution availability. Completed local checks are recorded below and do not
-substitute for these remaining release checks.
+The owner has selected Apache-2.0. LICENSE, NOTICE and Composer metadata now record
+the decision. Remaining release checks are final review/integration, a fully green
+CI run including strict Composer validation, the immutable numeric source tag and
+numeric-version Composer installation. Completed local/archive checks are recorded
+below and do not substitute for these remaining release checks.
 
 ## Stage 1 checks
 
@@ -112,6 +112,14 @@ subnet because automatic Docker address pools were exhausted; unrelated networks
 and services were preserved. No application server or host port was introduced.
 
 ## Stage 5 checks in progress
+
+Owner selected Apache-2.0 on 2026-11-23 (Asia/Bangkok). LICENSE is the unmodified
+official text from https://www.apache.org/licenses/LICENSE-2.0.txt, SHA-256
+`cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30`.
+NOTICE and Composer metadata agree. Strict Composer validation now passes locally;
+all 201 tests / 4,104 assertions, Pint and PHPStan remain clean. Archive verification
+now checks that LICENSE and NOTICE ship byte-for-byte with the agent guides.
+The earlier missing-license CI failures below are historical checkpoint evidence.
 
 The expanded suite passes 201 tests / 4,104 assertions under PHP 8.4.27, including
 executable quick-start/configuration examples and all-public engine-type/float-token
