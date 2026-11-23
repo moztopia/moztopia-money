@@ -16,12 +16,12 @@ compatibility even when method signatures remain unchanged.
 
 ## Stages
 
-1. #2 contracts and independent reference vectors — checkpoint pushed; draft PR #7.
-2. #3 monetary engine — implemented; verification and review in progress.
-3. #4 rates, conversion and cache — implemented; verification and review in progress.
-4. #5 Laravel integration — implemented; verification and review in progress.
-5. #6 packaging, agent-first documentation and release checks — in progress on the
-   verified Stage 4 checkpoint; review/integration remains open.
+1. #2 contracts and independent reference vectors — implemented and reviewed; checkpoint PR #7.
+2. #3 monetary engine — implemented and reviewed; checkpoint PR #8.
+3. #4 rates, conversion and cache — implemented and reviewed; checkpoint PR #9.
+4. #5 Laravel integration — implemented and reviewed; checkpoint PR #10.
+5. #6 packaging, agent-first documentation and installation — implemented and tested.
+   The complete coherent integration is [PR #11](https://github.com/moztopia/moztopia-money/pull/11).
 
 Every stage requires relevant tests, documented decisions, public-contract review
 and a reviewable checkpoint. Stage completion does not imply full SDK completion.
@@ -33,26 +33,28 @@ with Composer 2.11.1; PHP 8.5.13 is available for later matrix validation.
 No host software installation is required. No application, server or database
 stack is scaffolded. Production runtime is consumer-owned and unverified.
 
-## Pending release evidence
+## Finalization receipts
 
-The owner has selected Apache-2.0. LICENSE, NOTICE and Composer metadata now record
-the decision. Remaining release checks are final review/integration, a fully green
-CI run including strict Composer validation, the immutable numeric source tag and
-numeric-version Composer installation. Completed local/archive checks are recorded
-below and do not substitute for these remaining release checks.
+The owner selected Apache-2.0. LICENSE, NOTICE and Composer metadata record the
+decision. Final CI, exact integration commit/numeric tag, numeric-version Composer
+consumer checks and wiki synchronization are recorded in PR #11 and the owning
+Project. Verify those receipts before claiming a version is available. This avoids
+embedding a source commit's own hash in its bytes. Archive checks prove packaging;
+numeric VCS checks additionally prove the actual supported installation path.
+No main promotion, GitHub release or Packagist publication is implied.
 
-## Stage 1 checks
+## Stage 1 checkpoint checks
 
 Independent Python stdlib oracle verified 107 fixed arithmetic/rounding/allocation/
 conversion/formatting reference checks. Pest verified the public Moztopia rounding
 identifiers. Pint and PHPStan level max pass for current source under PHP 8.4.27.
-Composer metadata validates structurally, but strict validation warns because the
-owner-selected license is still pending. These checks establish the contract
-checkpoint only; they do not verify a monetary engine that is not implemented yet.
+At this historical checkpoint, strict validation warned because licensing was
+pending. This checkpoint established contracts only; later stages implement the
+engine and the owner-selected license clears that earlier warning.
 
-## Stage 2 checks
+## Stage 2 checkpoint checks
 
-The current core has 125 passing Pest tests (3,345 assertions), including 600
+The core checkpoint had 125 passing Pest tests (3,345 assertions), including 600
 seeded allocation/arithmetic/serialization/rational invariants across JPY, THB
 and KWD. Fixed reference vectors remain unchanged and independently verified.
 Hostile JSON cases cover duplicate decoded keys, malformed number syntax,
@@ -68,7 +70,7 @@ and verify Illuminate is absent. These path installs inspect the working source;
 immutable release/archive installation and full PHP-version test matrices remain
 Stage 5 work. No release availability or Laravel support is claimed yet.
 
-## Stage 3 checks
+## Stage 3 checkpoint checks
 
 Offline provider fixtures verify exact long numeric/exponent parsing, requested
 versus observed historical dates, explicit fallback bounds, provider replacement,
@@ -84,7 +86,7 @@ rate `31.395` as a string, actual/source date 2026-01-15, requested date 2026-01
 provider Frankfurter, source ECB and a separate UTC retrieval timestamp. This live
 check is not part of ordinary tests or CI and provides no uptime guarantee.
 
-## Stage 4 checks
+## Stage 4 checkpoint checks
 
 Combined suite: 196 passing Pest tests / 3,595 assertions under PHP 8.4.27 with
 Laravel 13.43.0 and Testbench 11.3.0. PHPStan maximum level, Pint, unchanged 107
@@ -111,7 +113,7 @@ or daemon configuration changed. The disposable database used a reviewed private
 subnet because automatic Docker address pools were exhausted; unrelated networks
 and services were preserved. No application server or host port was introduced.
 
-## Stage 5 checks in progress
+## Stage 5 and final audit
 
 Owner selected Apache-2.0 on 2026-11-23 (Asia/Bangkok). LICENSE is the unmodified
 official text from https://www.apache.org/licenses/LICENSE-2.0.txt, SHA-256
@@ -129,7 +131,10 @@ for freshness, stale cutoff and local retention. Explicit UTC transition vectors
 cover spring/fall and exact stale/retention boundaries. The expanded local suite
 passes 204 tests / 4,116 assertions; strict metadata, Pint, PHPStan, API checks,
 executable examples and all 107 independent reference checks pass. The corrected
-tip requires its own hosted CI pass before integration.
+tip passed all hosted checks in
+[run 45096464973](https://github.com/moztopia/moztopia-money/actions/runs/45096464973).
+The subsequent optional cURL runtime prerequisite is explicitly documented and
+guarded; final tip CI remains required by the integration receipts above.
 
 The expanded suite passes 201 tests / 4,104 assertions under PHP 8.4.27, including
 executable quick-start/configuration examples and all-public engine-type/float-token

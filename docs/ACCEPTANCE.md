@@ -1,9 +1,9 @@
 # Definition-of-done evidence
 
 This checklist maps the owner's numbered baseline to concrete checks. A local
-check is not a publication claim. Current source is unreleased; final integration,
-numeric tagging and distribution verification remain open. The owner selected
-Apache-2.0; LICENSE, NOTICE and Composer metadata carry that decision.
+check is not a publication claim. The owner selected Apache-2.0; LICENSE, NOTICE
+and Composer metadata carry that decision. Final integration, numeric-tag and
+installation receipts are recorded in [PR #11](https://github.com/moztopia/moztopia-money/pull/11).
 
 ## Monetary contracts (items 2–10)
 
@@ -71,18 +71,25 @@ CONSUMING_AGENTS.md supplies copyable application instructions; root AGENTS.md
 governs maintenance. DocumentationTest executes quick-start snippets and the
 published Laravel configuration. Generated API signatures are checked for drift.
 
-## Open release gates (items 1, 37–38)
+## Release verification (items 1, 37–38)
 
-- Final review/integration of all stage PRs and impact-classified immutable source
-  versions/tags under the repository's existing workflow.
-- A fully green CI run for the final tip. Licensed checkpoint 62eb77b passed every
-  job; the subsequent elapsed-time cache correction needs its own validated run.
-- Numeric-version Composer installation and confirmed distribution mechanism.
-  Archive installation does not establish Packagist availability.
-- Final release consistency audit, including wiki/source links and exact tested
-  revision. Main promotion/publication follows the owner's authorized process.
+Verify the authoritative receipts in PR #11 for each of these finalization steps:
 
-The SDK is not declared complete while these gates remain open. See DELIVERY.md
-for actual runtime versions, source checkpoints and current remaining work.
+- Complete SDK review/integration, with the stage PRs preserved as checkpoints.
+- Green final-tip CI, including strict Composer validation and all runtime,
+  documentation, quality and archive-installation jobs. Licensed checkpoint 62eb77b
+  and elapsed-time correction e917ae8 both passed every hosted job.
+- Immutable numeric tag on the exact integration commit, agreeing with VERSION
+  and the changelog. The initial coherent SDK feature version is 0.1.0.
+- Numeric-version Composer installation through the documented public VCS
+  repository in standalone and fresh Laravel consumers, with source identity,
+  Apache license/NOTICE and agent documentation checked. Archive installation
+  alone does not establish numeric VCS or Packagist availability.
+- Wiki/source links and tested revision consistency. Main promotion, a GitHub
+  release and Packagist publication follow separately authorized flows.
+
+These receipts are completion gates, not optional follow-up work. DELIVERY.md
+records actual runtime versions and checkpoint checks without claiming broader
+driver, locale or production-runtime coverage than was exercised.
 
 by-dolly
